@@ -1,15 +1,10 @@
 
-import Message from './Message';
+import Header from './Header';
 
 function App() {
 
-  return <div>
-    <Message title="Hello World" />
-    <Message title="Hello World" />
-    <Message title="Good bye World" />
-    <Message title="Hello World" />
-    <Message title="Hello World" />
-    </div>
+  return (<Header/>);
+  
 }
 
 
