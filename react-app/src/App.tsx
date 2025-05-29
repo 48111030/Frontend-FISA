@@ -1,11 +1,13 @@
 
-import Header from './Header';
+import Formulario from './Formulario';
 
 function App() {
 
-  return (<Header/>);
+  return <Formulario/>;
   
 }
+
+
 
 
 export default App;

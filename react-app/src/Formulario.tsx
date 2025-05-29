@@ -1,0 +1,26 @@
+import './Formulario.css';
+
+
+function Formulario() {
+  return (
+    
+    <div class="login">
+      <div class="hader">
+        <span>Join us today!</span>
+        <p>Sing up now to become a member.</p>
+      </div>
+      <form action="#">
+        <input type="text" placeholder="Enter Name" required="" />
+        <input type="email" placeholder="Enter Emaill" required="" />
+        <input type="password" placeholder="Choose A Password" required="" />
+        <input type="password" placeholder="Re-Enter Password" required="" />
+        <input type="button" value="Signup" />
+        <span> Already a member? <a href="#">Login Here</a></span>
+      </form>
+    </div>
+    
+  );
+
+}
+
+export default Formulario;
