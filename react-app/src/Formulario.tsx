@@ -4,7 +4,7 @@ function Formulario() {
 
 
   return (
-    <div className="form-container">
+    
       <div className="form-box">
         <button  className="back-button">
           <img src="Flecha.png" alt="Back" className="Flecha" />
@@ -12,7 +12,7 @@ function Formulario() {
 
         <div className="logo">
           <img className="LogoN" src="LogoN.png" alt="Logo" />
-        </div>
+        </div>  
 
         <div className="inputs">
           <input type="text" placeholder="Historial crediticio" required />
@@ -29,7 +29,7 @@ function Formulario() {
           <button  id="LogInBtn">Continuar</button>
         </div>
       </div>
-    </div>
+    
   );
 }
 
