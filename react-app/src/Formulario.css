@@ -1,64 +1,209 @@
 body {
-    padding: 0;
-    margin: 0;
-    box-sizing: content-box;
-    
-    background-color: aliceblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 75vw;
-    height: 100vh;
-    
+  background-color: #a67c3e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding-left:500px;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #704c23 ,#3f2910);
 }
 
-/* From Uiverse.io by FahadArnob52539 */ 
-.login {
-    max-width: 280px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    width: 40vw;
-    padding: 2vw;
-  }
-  .hader {
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
-  }
-  .hader p {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 400;
-    color: #706b6b;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-  }
-  form input {
-    height: 40px;
-    outline: none;
-    border: 1px solid #cccccc;
-    padding: 10px;
-    font-size: 15px;
-    border-radius: 8px;
-  }
-  form input[type="button"] {
-    background-color: rgba(17, 17, 226, 0.562);
-    color: #ffffff;
-    font-size: 17px;
-  }
-  form span {
-    text-align: center;
-    font-size: 16px;
-    padding-top: 10px;
-    color: #706b6b;
-  }
-  form span a {
-    text-decoration: none;
-    color: rgba(36, 36, 207, 0.671);
-    font-weight: 500;
-  }
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: fit-content;
+}
+
+.form-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  position: relative;
+  text-align: center;
+}
+
+
+#LogInBtn{
+  width: 35%;
+  padding: 10px;
+  margin: 4px 5px;
+  border: 1px solid BLACK;
+  border-radius: 20px;
+  background-color: #E4B376; /* Color amarillo claro */
+  font-size: 16px;
+  color:#444;
+  position: relative;
+  top: 10px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.back-button:hover {
+  outline: none;
+  scale: 1.1;
+}
+
+.logo {
+  font-size: 36px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4); 
+  width:108.4%;
+  margin-left: -19px;
+}
+
+ input {
+  width: 50%;
+  padding: 10px;
+  height: 37px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFFDD0 ;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 15px;
   
+  
+}
+
+.SignUp-form .dob {
+  display: flex ;
+  justify-content: space-between ;
+}
+
+
+.SignUp-form button {
+  background-color: #cc9054;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 50%;
+  border: 1px solid black;
+}
+
+
+.DB {
+ display: flex;
+ margin-bottom:-4px;
+ margin-top: 7px;
+ color: #666;
+ margin-left: 38px;
+
+ 
+}
+button{
+  cursor: pointer !important;
+}
+
+input::placeholder {
+  text-align: center; /* Centra el texto del placeholder */
+}
+.LogoN {
+  width: 20px;
+}
+
+.phone-container {
+  display: flex;
+  gap: 10px;
+  width: 386px;
+  margin-top: 2px;
+  margin-left: 35px;
+}
+
+
+.country-code {
+  padding: 0px 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #FFFDD0; /* Color amarillo claro */
+  font-size: 16px;
+  height: 40px;
+  width: 120px;
+  text-align: center;
+  position: relative;
+  top: 8px;
+}
+.spacer{
+  width: 30px;
+  background-color: red;
+}
+
+#AddImageid {
+  color:#444;
+  width: 85%;
+  padding: 10px;
+  margin: 4px 5px;
+  border: 1px solid BLACK;
+  border-radius: 20px;
+  background-color: #E4B376; 
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.SignUp-div {
+  overflow-y: scroll;
+  height: 400px;
+  padding-bottom: 10px;
+}
+
+.SignUp-div::-webkit-scrollbar {
+width: 0; 
+}
+
+.form-bottom {
+  box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.3); 
+  width: 108.3%;
+  margin-left: -18px;
+  margin-top: 4px;
+  
+}
+input {
+  transition: 0.2s;
+  text-align: center;
+}
+.country-code {
+  transition: 0.2s;
+}
+.country-code:hover {
+  background-color: #fde9a5;
+
+}
+input:hover {
+background-color: #fde9a5;
+}
+button {
+  transition: 0.2s;
+}
+
+button:hover{
+  outline: 1px solid #3f2910;
+  background-color: #9c6f3b !important ;
+  color: black !important;
+  scale: 1.05;
+}
+
+
+.back-button:hover {
+  outline: none !important;
+  background-color: white !important;
+
+}
