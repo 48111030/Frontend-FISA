@@ -58,6 +58,10 @@ body {
 }
 .inputs {
   width: 100%;
+  max-height: 300px; /* fixed max height to enable scrolling */
+  overflow-y: auto;
+ 
+ 
 }
  input {
   width: 60%;

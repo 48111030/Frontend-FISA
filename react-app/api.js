@@ -11,15 +11,12 @@ app.use(express.json());
 
 // Set up Neon PostgreSQL connection pool
 const pool = new Pool({
-    user: 'YOUR_NEON_DB_USER',
-    host: 'YOUR_NEON_DB_HOST',
-    database: 'YOUR_NEON_DB_NAME',
-    password: 'YOUR_NEON_DB_PASSWORD',
-    port: 5432, // usually 5432 for postgres
+    connectionString: "postgresql://formdatos_owner:npg_qCeyh3odx9aG@ep-flat-fog-a86vesqg-pooler.eastus2.azure.neon.tech/formdatos?sslmode=require",
     ssl: {
       rejectUnauthorized: false
     }
-});
+  });
+  
 
 // Define the insert endpoint
 app.post('/api/insert', async (req, res) => {
@@ -36,7 +33,7 @@ app.post('/api/insert', async (req, res) => {
 
     try {
         const query = `
-            INSERT INTO prestamos
+            INSERT INTO public.formIA
             (historial_crediticio, ingresos_mensuales, deudas_mensuales, monto_prestamo, plazo_meses, edad, tipo_ingreso, anos_trabajando)
             VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
             RETURNING *;
