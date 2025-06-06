@@ -1,9 +1,9 @@
 
-import Formulario from './Formulario';
+import FormDatos from './FormDatos';
 
 function App() {
 
-  return <Formulario/>;
+  return <FormDatos/>;
   
 }
 

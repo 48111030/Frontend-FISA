@@ -13,12 +13,7 @@ function Formulario() {
     anos_trabajando: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.placeholder.toLowerCase().replace(/ /g, '_')]: e.target.value
-    });
-  };
+  
 
   const handleSubmit = async () => {
     try {
