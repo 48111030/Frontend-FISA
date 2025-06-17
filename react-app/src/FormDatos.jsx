@@ -123,9 +123,25 @@ function FormDatos() {
       </header>
 
       <main>
-        <div className="purple-block" aria-label="Bloque decorativo morado cuadrado con bordes redondeados">
-          <div className="bloquito" aria-label="Bloque decorativo morado cuadrado con bordes redondeados"></div>
-        </div>
+       
+          
+<div className="e-card playing">
+  <div className="image"></div>
+  
+  <div className="wave"></div>
+  <div className="wave"></div>
+  <div className="wave"></div>
+  
+
+      <div className="infotop">
+
+<div className="Logo">
+  
+</div>
+<div className="name">Ayúdanos a mejorar tu futuro</div>
+</div>
+</div>
+         
 
         <section className="form-container" aria-label="Formulario para rellenar solicitud">
           <h2>Rellena tus datos de la solicitud</h2>
