@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './FormDatos.css';
 
-const BASE_URL = 'https://fisa-backend.vercel.app'; // corregí la base, no poner /solicitudes aquí porque lo agregas luego
+const BASE_URL = 'https://fisa-backend.vercel.app';
 
 function FormDatos() {
   useEffect(() => {
@@ -9,7 +9,6 @@ function FormDatos() {
     link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
-
     return () => {
       document.head.removeChild(link);
     };
@@ -30,6 +29,8 @@ function FormDatos() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [mensajeIA, setMensajeIA] = useState('');
+  const [aptoIA, setAptoIA] = useState(null);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -58,6 +59,8 @@ function FormDatos() {
     setLoading(true);
     setError('');
     setSuccess(false);
+    setMensajeIA('');
+    setAptoIA(null);
 
     try {
       const res = await fetch(`${BASE_URL}/solicitudes`, {
@@ -69,12 +72,10 @@ function FormDatos() {
       });
 
       const text = await res.text();
-
       let data;
       try {
         data = JSON.parse(text);
       } catch {
-        // La respuesta no es JSON, puede ser HTML u otro texto
         throw new Error(`Respuesta inesperada del servidor: ${text}`);
       }
 
@@ -83,6 +84,9 @@ function FormDatos() {
       }
 
       setSuccess(true);
+      setMensajeIA(data.resultadoIA?.mensaje || '');
+      setAptoIA(data.resultadoIA?.resultado ?? null);
+
       setFormData({
         historialcrediticio: '',
         ingresos: '',
@@ -123,25 +127,16 @@ function FormDatos() {
       </header>
 
       <main>
-       
-          
-<div className="e-card playing">
-  <div className="image"></div>
-  
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  
-
-      <div className="infotop">
-
-<div className="Logo">
-  
-</div>
-<div className="name">Ayúdanos a mejorar tu futuro</div>
-</div>
-</div>
-         
+        <div className="e-card playing">
+          <div className="image"></div>
+          <div className="wave"></div>
+          <div className="wave"></div>
+          <div className="wave"></div>
+          <div className="infotop">
+            <div className="Logo"></div>
+            <div className="name">Ayúdanos a potenciar tu futuro</div>
+          </div>
+        </div>
 
         <section className="form-container" aria-label="Formulario para rellenar solicitud">
           <h2>Rellena tus datos de la solicitud</h2>
@@ -220,18 +215,19 @@ function FormDatos() {
                   required
                 />
               </div>
-              <div>
-                <label htmlFor="anios">Años trabajando</label>
-                <input
-                  id="anios"
-                  name="anios"
-                  type="text"
-                  autoComplete="off"
-                  value={formData.añosexp}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+            </div>
+
+            <div>
+              <label htmlFor="anios">Años trabajando</label>
+              <input
+                id="anios"
+                name="anios"
+                type="text"
+                autoComplete="off"
+                value={formData.añosexp}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div>
@@ -253,6 +249,14 @@ function FormDatos() {
 
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {success && <p style={{ color: 'green' }}>Solicitud enviada con éxito!</p>}
+
+            {mensajeIA && (
+              <div style={{ marginTop: '1rem', padding: '1rem', background: '#f3f3f3', borderRadius: '5px' }}>
+                <h3>Resultado del análisis:</h3>
+                <p><strong>Mensaje:</strong> {mensajeIA}</p>
+                <p><strong>Apto:</strong> {aptoIA ? 'Sí' : 'No'}</p>
+              </div>
+            )}
           </form>
         </section>
       </main>
