@@ -101,6 +101,11 @@
     transition: color 0.3s ease;
     scale: 2;
     
+    
+  }
+  .header-left, .header-right {
+    margin-left: 180px;
+    margin-right: 240px;
   }
   .header-right .material-icons:hover,
   .header-right .material-icons:focus {
@@ -292,6 +297,7 @@
     /* Replace left icons with hamburger if mobile */
     .header-left .circle-icon {
       display: none;
+
     }
   }
   /* From Uiverse.io by MikeAndrewDesigner */ 
