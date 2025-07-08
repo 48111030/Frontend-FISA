@@ -15,7 +15,6 @@ function FormDatos() {
   }, []);
 
   const [formData, setFormData] = useState({
-    historialcrediticio: '',
     ingresos: '',
     deudasmensuales: '',
     monto: '',
@@ -27,7 +26,7 @@ function FormDatos() {
     deuda_total: '',
     tuvo_atrasos: false,
     usuariosid: 1,
-    emailUsuario: 'usuario@ejemplo.com', // temporal (simula email del usuario)
+    emailUsuario: 'usuario@ejemplo.com',
   });
 
   const [loading, setLoading] = useState(false);
@@ -40,7 +39,6 @@ function FormDatos() {
     const { name, value } = e.target;
 
     const nameMap = {
-      historial: 'historialcrediticio',
       ingresos: 'ingresos',
       deudas: 'deudasmensuales',
       monto: 'monto',
@@ -55,9 +53,13 @@ function FormDatos() {
 
     const key = nameMap[name] || name;
 
+    const newValue = ['ingresos', 'deudasmensuales', 'monto', 'plazomeses', 'edad', 'añosexp', 'mora_total', 'deuda_total'].includes(key) 
+      ? Number(value) 
+      : value;
+
     setFormData(prev => ({
       ...prev,
-      [key]: value,
+      [key]: newValue,
     }));
   }
 
@@ -68,6 +70,7 @@ function FormDatos() {
     setSuccess(false);
     setMensajeIA('');
     setAptoIA(null);
+    console.log("📤 Enviando:", formData);
 
     try {
       const res = await fetch(`${BASE_URL}/solicitudes`, {
@@ -77,14 +80,6 @@ function FormDatos() {
         },
         body: JSON.stringify({
           ...formData,
-          edad: Number(formData.edad),
-          ingresos: Number(formData.ingresos),
-          deudasmensuales: Number(formData.deudasmensuales),
-          monto: Number(formData.monto),
-          plazomeses: Number(formData.plazomeses),
-          añosexp: Number(formData.añosexp),
-          mora_total: Number(formData.mora_total),
-          deuda_total: Number(formData.deuda_total),
           tuvo_atrasos: formData.tuvo_atrasos === true || formData.tuvo_atrasos === 'si',
         }),
       });
@@ -106,7 +101,6 @@ function FormDatos() {
       setAptoIA(data.resultadoIA?.resultado ?? null);
 
       setFormData({
-        historialcrediticio: '',
         ingresos: '',
         deudasmensuales: '',
         monto: '',
@@ -125,7 +119,7 @@ function FormDatos() {
     } finally {
       setLoading(false);
     }
-  }
+  } 
 
   return (
     <div>
@@ -164,18 +158,6 @@ function FormDatos() {
         <section className="form-container" aria-label="Formulario para rellenar solicitud">
           <h2>Rellena tus datos de la solicitud</h2>
           <form onSubmit={handleSubmit} noValidate>
-            <div>
-              <label htmlFor="historial">Historial crediticio</label>
-              <input
-                id="historial"
-                name="historial"
-                type="text"
-                value={formData.historialcrediticio}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
             <div>
               <label htmlFor="ingresos">Ingresos mensuales</label>
               <input
