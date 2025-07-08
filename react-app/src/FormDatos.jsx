@@ -23,7 +23,11 @@ function FormDatos() {
     edad: '',
     añosexp: '',
     tipodeingresos: '',
+    mora_total: '',
+    deuda_total: '',
+    tuvo_atrasos: false,
     usuariosid: 1,
+    emailUsuario: 'usuario@ejemplo.com', // temporal (simula email del usuario)
   });
 
   const [loading, setLoading] = useState(false);
@@ -44,6 +48,9 @@ function FormDatos() {
       edad: 'edad',
       anios: 'añosexp',
       tipoIngreso: 'tipodeingresos',
+      mora_total: 'mora_total',
+      deuda_total: 'deuda_total',
+      atrasos: 'tuvo_atrasos',
     };
 
     const key = nameMap[name] || name;
@@ -68,7 +75,18 @@ function FormDatos() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          edad: Number(formData.edad),
+          ingresos: Number(formData.ingresos),
+          deudasmensuales: Number(formData.deudasmensuales),
+          monto: Number(formData.monto),
+          plazomeses: Number(formData.plazomeses),
+          añosexp: Number(formData.añosexp),
+          mora_total: Number(formData.mora_total),
+          deuda_total: Number(formData.deuda_total),
+          tuvo_atrasos: formData.tuvo_atrasos === true || formData.tuvo_atrasos === 'si',
+        }),
       });
 
       const text = await res.text();
@@ -96,7 +114,11 @@ function FormDatos() {
         edad: '',
         añosexp: '',
         tipodeingresos: '',
+        mora_total: '',
+        deuda_total: '',
+        tuvo_atrasos: false,
         usuariosid: 1,
+        emailUsuario: 'usuario@ejemplo.com',
       });
     } catch (err) {
       setError(err.message);
@@ -117,8 +139,10 @@ function FormDatos() {
           <div className="circle-icon" aria-label="Icono decorativo circular morado"></div>
         </div>
         <div className="header-right" role="navigation" aria-label="Navegación principal">
-          <svg className="material-icons"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1"/></svg>
-          
+          <svg className="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1"/>
+          </svg>
+
           <span className="material-icons" tabIndex="0" role="link" aria-label="Perfil">
             person
           </span>
@@ -146,57 +170,55 @@ function FormDatos() {
                 id="historial"
                 name="historial"
                 type="text"
-                autoComplete="off"
                 value={formData.historialcrediticio}
                 onChange={handleChange}
                 required
               />
             </div>
+
             <div>
               <label htmlFor="ingresos">Ingresos mensuales</label>
               <input
                 id="ingresos"
                 name="ingresos"
                 type="text"
-                autoComplete="off"
                 value={formData.ingresos}
                 onChange={handleChange}
                 required
               />
             </div>
+
             <div>
               <label htmlFor="deudas">Deudas mensuales</label>
               <input
                 id="deudas"
                 name="deudas"
                 type="text"
-                autoComplete="off"
                 value={formData.deudasmensuales}
                 onChange={handleChange}
                 required
               />
             </div>
+
             <div>
               <label htmlFor="monto">Monto préstamo</label>
               <input
                 id="monto"
                 name="monto"
                 type="text"
-                autoComplete="off"
                 value={formData.monto}
                 onChange={handleChange}
                 required
               />
             </div>
 
-            <div className="inline-row" aria-label="Datos adicionales en fila">
+            <div className="inline-row">
               <div>
                 <label htmlFor="plazo">Plazo meses</label>
                 <input
                   id="plazo"
                   name="plazo"
                   type="text"
-                  autoComplete="off"
                   value={formData.plazomeses}
                   onChange={handleChange}
                   required
@@ -208,7 +230,6 @@ function FormDatos() {
                   id="edad"
                   name="edad"
                   type="text"
-                  autoComplete="off"
                   value={formData.edad}
                   onChange={handleChange}
                   required
@@ -222,7 +243,6 @@ function FormDatos() {
                 id="anios"
                 name="anios"
                 type="text"
-                autoComplete="off"
                 value={formData.añosexp}
                 onChange={handleChange}
                 required
@@ -235,14 +255,56 @@ function FormDatos() {
                 id="tipoIngreso"
                 name="tipoIngreso"
                 type="text"
-                autoComplete="off"
                 value={formData.tipodeingresos}
                 onChange={handleChange}
                 required
               />
             </div>
 
-            <button className="submit-btn" type="submit" aria-label="Enviar formulario" disabled={loading}>
+            <div>
+              <label htmlFor="mora_total">Mora total ($)</label>
+              <input
+                id="mora_total"
+                name="mora_total"
+                type="text"
+                value={formData.mora_total}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="deuda_total">Deuda total ($)</label>
+              <input
+                id="deuda_total"
+                name="deuda_total"
+                type="text"
+                value={formData.deuda_total}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="atrasos">¿Tuviste atrasos de pago?</label>
+              <select
+                id="atrasos"
+                name="atrasos"
+                value={formData.tuvo_atrasos ? 'si' : 'no'}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    tuvo_atrasos: e.target.value === 'si',
+                  }))
+                }
+                required
+              >
+                <option value="no">No</option>
+                <option value="si">Sí</option>
+              </select>
+            </div>
+
+            <button className="submit-btn" type="submit" disabled={loading}>
               {loading ? 'Enviando...' : 'Enviar'}
             </button>
 
