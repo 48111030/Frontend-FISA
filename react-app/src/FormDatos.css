@@ -80,7 +80,7 @@
     border: 2px solid var(--purple);
     scale: 1.4;
   }
-  
+ 
   .circle-icon::before {
     content: '';
     position: absolute;
@@ -91,6 +91,8 @@
     background: #4a235a;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
+    
+    
   }
   
   /* Right icons */
@@ -100,7 +102,6 @@
     cursor: pointer;
     transition: color 0.3s ease;
     scale: 2;
-    
     
   }
   .header-left, .header-right {
