@@ -94,6 +94,45 @@
     
     
   }
+  /* Personaliza el select */
+select {
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  border: 2px solid var(--purple);
+  border-radius: 12px;
+  background-color: #fdf5ff;
+  color: #4a235a;
+  font-weight: 500;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none; /* 🔥 OCULTA LA FLECHA */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 120px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(122, 80, 151, 0.15);
+}
+
+select:focus {
+  border-color: #7e36b2;
+  box-shadow: 0 0 0 3px rgba(126, 54, 178, 0.2);
+}
+select {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+
+/* Aplica en navegadores que respetan hover o selected visual */
+select option:checked,
+select option:hover {
+  background-color: #e3c2ff; /* 🔄 Morado claro al pasar mouse */
+  color: #3e164e;
+}
+
+  
+  
   
   /* Right icons */
   .header-right .material-icons {
