@@ -1,13 +1,11 @@
+// src/App.jsx
+import React from "react";
+import FormDatos from "./FormDatos.jsx";
 
-import FormDatos from './FormDatos';
+import Register from "./Register";
 
 function App() {
-
-  return <FormDatos/>;
-  
+  return <Register />;
 }
-
-
-
 
 export default App;
