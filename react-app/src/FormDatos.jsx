@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './FormDatos.css';
-
+import { useNavigate } from "react-router-dom";
 const BASE_URL = 'https://fisa-backend.vercel.app';
 
 function FormDatos() {
