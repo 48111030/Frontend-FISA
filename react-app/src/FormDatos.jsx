@@ -181,7 +181,8 @@ function FormDatos() {
           <form onSubmit={handleSubmit} noValidate>
             <div>
               <label htmlFor="ingresos">Ingresos mensuales</label>
-              <input
+              <input 
+              className="INPUT"
                 id="ingresos"
                 name="ingresos"
                 type="text"
@@ -194,6 +195,7 @@ function FormDatos() {
             <div>
               <label htmlFor="deudas">Deudas mensuales</label>
               <input
+              className="INPUT"
                 id="deudas"
                 name="deudas"
                 type="text"
@@ -206,6 +208,7 @@ function FormDatos() {
             <div>
               <label htmlFor="monto">Monto préstamo</label>
               <input
+              className="INPUT"
                 id="monto"
                 name="monto"
                 type="text"
@@ -219,6 +222,7 @@ function FormDatos() {
               <div>
                 <label htmlFor="plazo">Plazo meses</label>
                 <input
+                className="INPUT"
                   id="plazo"
                   name="plazo"
                   type="text"
@@ -230,6 +234,7 @@ function FormDatos() {
               <div>
                 <label htmlFor="edad">Edad</label>
                 <input
+                className="INPUT"
                   id="edad"
                   name="edad"
                   type="text"
@@ -243,6 +248,7 @@ function FormDatos() {
             <div>
               <label htmlFor="anios">Años trabajando</label>
               <input
+              className="INPUT"
                 id="anios"
                 name="anios"
                 type="text"
@@ -255,6 +261,7 @@ function FormDatos() {
             <div>
               <label htmlFor="tipoIngreso">Tipo ingreso</label>
               <input
+              className="INPUT"
                 id="tipoIngreso"
                 name="tipoIngreso"
                 type="text"
@@ -267,6 +274,7 @@ function FormDatos() {
             <div>
               <label htmlFor="mora_total">Mora total ($)</label>
               <input
+              className="INPUT"
                 id="mora_total"
                 name="mora_total"
                 type="text"
@@ -279,6 +287,7 @@ function FormDatos() {
             <div>
               <label htmlFor="deuda_total">Deuda total ($)</label>
               <input
+              className="INPUT"
                 id="deuda_total"
                 name="deuda_total"
                 type="text"

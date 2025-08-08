@@ -12,10 +12,11 @@ const Register = () => {
         <div className="form-section">
           <div className="form-box">
             <div className="logo">FISA</div>
-            <input type="text" placeholder="Nombre y apellido" />
-            <input type="text" placeholder="Nombre usuario" />
-            <input type="password" placeholder="Contraseña" />
-            <input type="email" placeholder="Mail" />
+            <input className="Input" type="text" placeholder="Nombre y apellido" />
+            <input className="Input" type="text" placeholder="Nombre usuario" />
+            <input className="Input" type="password" placeholder="Contraseña" />
+            <input className="Input" type="email" placeholder="Mail" />
+            
             <button onClick={() => navigate("/formdatos")}>Enviar</button>
             <a href="#">Iniciar sesión</a>
           </div>

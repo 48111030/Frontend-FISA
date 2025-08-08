@@ -201,7 +201,7 @@ select option:hover {
     font-size: 1.2rem;
   }
   
-  input[type="text"] {
+  .INPUT[type="text"] {
     width: 100%;
     padding: 8px 12px;
     font-size: 1rem;
@@ -212,7 +212,7 @@ select option:hover {
     outline-offset: 2px;
     transition: border-color 0.3s ease;
   }
-  input[type="text"]:focus {
+  .INPUT[type="text"]:focus {
     border-bottom-color: #77448f;
     outline: none;
   }
