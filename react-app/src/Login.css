@@ -1,7 +1,4 @@
-/* src/components/Register.css */
-
-  
-  .cuerpo {
+.cuerpo {
     margin: 0;
     background: linear-gradient(to bottom, #f0f0f0, #ccc);
     width: 100vw;
@@ -24,9 +21,15 @@
     background: white;
     padding: 40px 30px;
     border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     width: 300px;
     text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .form-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
   }
   
   .logo {
@@ -47,13 +50,19 @@
     vertical-align: middle;
   }
   
-   .Input {
+  .Input {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
     border: none;
     background-color: #ddd;
     border-radius: 20px;
+    outline: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .Input:focus {
+    background-color: #e8d9f5;
   }
   
   .form-box button {
@@ -65,6 +74,11 @@
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .form-box button:hover {
+    background-color: #6c3483;
   }
   
   .form-box a {
@@ -73,6 +87,11 @@
     font-size: 14px;
     color: #6c3483;
     text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .form-box a:hover {
+    color: #4b007d;
   }
   
   .side-text {

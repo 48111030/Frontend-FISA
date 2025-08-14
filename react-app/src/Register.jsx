@@ -1,10 +1,9 @@
-// src/components/Register.jsx
 import React from "react";
 import "./Register.css";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate, Link } from "react-router-dom"; // 👈 Agregamos Link
 
 const Register = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   return (
     <div className="cuerpo">
@@ -18,7 +17,9 @@ const Register = () => {
             <input className="Input" type="email" placeholder="Mail" />
             
             <button onClick={() => navigate("/formdatos")}>Enviar</button>
-            <a href="#">Iniciar sesión</a>
+
+            {/* 👇 Aquí va el Link */}
+            <Link to="/login">Iniciar sesión</Link>
           </div>
         </div>
         <div className="side-text">Crea tu cuenta en segundos.</div>
