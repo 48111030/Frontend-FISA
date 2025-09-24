@@ -34,19 +34,19 @@
     font-weight: bold;
     color: #6c3483;
     margin-bottom: 30px;
+    display: flex;
+    position: relative;
+    left: 10px;
+    justify-content: center;
   }
   
-  .logo::after {
-    content: "";
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    margin-left: 10px;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #a485e0 50%, #2e004f 50%);
-    vertical-align: middle;
-  }
-  
+
+.logo3{
+    width: 60px;
+    padding: 10px;
+    position: relative;
+    top: -10px;
+}
    .Input {
     width: 100%;
     padding: 12px;

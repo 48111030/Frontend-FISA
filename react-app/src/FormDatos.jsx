@@ -130,7 +130,7 @@ function FormDatos() {
               arrow_back_ios_new
             </span>
           </button>
-          <div className="circle-icon" aria-label="Icono decorativo circular morado"></div>
+          <img src="./logo.png" alt="" className='logo1' />
         </div>
         <div className="header-right" role="navigation" aria-label="Navegación principal">
           <span className="material-icons" aria-label="Inicio">home</span>

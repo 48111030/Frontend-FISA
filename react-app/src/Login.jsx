@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Register.css"; // reutilizamos el mismo diseño
+import "./Register.css";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -54,7 +54,8 @@ const Login = () => {
       <div className="container">
         <div className="form-section">
           <div className="form-box">
-            <div className="logo">FISA</div>
+            <div className="logo">FISA <img src="./logo.png" alt="" className='logo3' /></div>
+           
             <input
               className="Input"
               type="email"

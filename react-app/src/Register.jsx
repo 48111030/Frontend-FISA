@@ -55,7 +55,8 @@ const Register = () => {
       <div className="container">
         <div className="form-section">
           <div className="form-box">
-            <div className="logo">FISA</div>
+            <div className="logo">FISA <img src="./logo.png" alt="" className='logo3' /></div>
+            
 
             <input
               className="Input"
