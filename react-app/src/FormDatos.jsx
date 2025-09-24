@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './FormDatos.css';
 import { useNavigate } from "react-router-dom";
+
 const BASE_URL = 'https://fisa-backend.vercel.app';
 
 function FormDatos() {
@@ -70,7 +71,6 @@ function FormDatos() {
     setSuccess(false);
     setMensajeIA('');
     setAptoIA(null);
-    console.log("📤 Enviando:", formData);
 
     try {
       const res = await fetch(`${BASE_URL}/solicitudes`, {
@@ -133,37 +133,24 @@ function FormDatos() {
           <div className="circle-icon" aria-label="Icono decorativo circular morado"></div>
         </div>
         <div className="header-right" role="navigation" aria-label="Navegación principal">
-        <span className="material-icons" aria-label="Inicio">home</span>
-          <span className="material-icons" tabIndex="0" role="link" aria-label="Perfil">
-            person
-          </span>
+          <span className="material-icons" aria-label="Inicio">home</span>
+          <span className="material-icons" tabIndex="0" role="link" aria-label="Perfil">person</span>
         </div>
       </header>
 
       <main>
         <div className="e-card playing">
           <div className="image"></div>
-          <div
-            className="wave"
-            style={{
-              background: aptoIA === null ? '' : aptoIA ? '#90ee90' : '#f08080',
-              transition: 'background 0.6s ease'
-            }}
-          ></div>
-          <div
-            className="wave"
-            style={{
-              background: aptoIA === null ? '' : aptoIA ? '#90ee90' : '#f08080',
-              transition: 'background 0.6s ease'
-            }}
-          ></div>
-          <div
-            className="wave"
-            style={{
-              background: aptoIA === null ? '' : aptoIA ? '#90ee90' : '#f08080',
-              transition: 'background 0.6s ease'
-            }}
-          ></div>
+          {[1, 2, 3].map((_, i) => (
+            <div
+              key={i}
+              className="wave"
+              style={{
+                background: aptoIA === null ? '' : aptoIA ? '#90ee90' : '#f08080',
+                transition: 'background 0.6s ease'
+              }}
+            ></div>
+          ))}
           <div className="infotop">
             <div className="Logo"></div>
             <div className="name">
@@ -179,122 +166,52 @@ function FormDatos() {
         <section className="form-container" aria-label="Formulario para rellenar solicitud">
           <h2>Rellena tus datos de la solicitud</h2>
           <form onSubmit={handleSubmit} noValidate>
-            <div>
-              <label htmlFor="ingresos">Ingresos mensuales</label>
-              <input 
-              className="INPUT"
-                id="ingresos"
-                name="ingresos"
-                type="text"
-                value={formData.ingresos}
-                onChange={handleChange}
-                required
-              />
+
+            {/* INGRESOS - DEUDAS - MONTO */}
+            <div className="form-row">
+              <div>
+                <label htmlFor="ingresos">Ingresos mensuales</label>
+                <input className="INPUT" id="ingresos" name="ingresos" type="text" value={formData.ingresos} onChange={handleChange} required />
+              </div>
+              <div>
+                <label htmlFor="deudas">Deudas mensuales</label>
+                <input className="INPUT" id="deudas" name="deudas" type="text" value={formData.deudasmensuales} onChange={handleChange} required />
+              </div>
+              <div>
+                <label htmlFor="monto">Monto préstamo</label>
+                <input className="INPUT" id="monto" name="monto" type="text" value={formData.monto} onChange={handleChange} required />
+              </div>
             </div>
 
-            <div>
-              <label htmlFor="deudas">Deudas mensuales</label>
-              <input
-              className="INPUT"
-                id="deudas"
-                name="deudas"
-                type="text"
-                value={formData.deudasmensuales}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="monto">Monto préstamo</label>
-              <input
-              className="INPUT"
-                id="monto"
-                name="monto"
-                type="text"
-                value={formData.monto}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="inline-row">
+            {/* PLAZO - EDAD - AÑOS */}
+            <div className="form-row">
               <div>
                 <label htmlFor="plazo">Plazo meses</label>
-                <input
-                className="INPUT"
-                  id="plazo"
-                  name="plazo"
-                  type="text"
-                  value={formData.plazomeses}
-                  onChange={handleChange}
-                  required
-                />
+                <input className="INPUT" id="plazo" name="plazo" type="text" value={formData.plazomeses} onChange={handleChange} required />
               </div>
               <div>
                 <label htmlFor="edad">Edad</label>
-                <input
-                className="INPUT"
-                  id="edad"
-                  name="edad"
-                  type="text"
-                  value={formData.edad}
-                  onChange={handleChange}
-                  required
-                />
+                <input className="INPUT" id="edad" name="edad" type="text" value={formData.edad} onChange={handleChange} required />
               </div>
-            </div>
-
-            <div>
-              <label htmlFor="anios">Años trabajando</label>
-              <input
-              className="INPUT"
-                id="anios"
-                name="anios"
-                type="text"
-                value={formData.añosexp}
-                onChange={handleChange}
-                required
-              />
+              <div>
+                <label htmlFor="anios">Años trabajando</label>
+                <input className="INPUT" id="anios" name="anios" type="text" value={formData.añosexp} onChange={handleChange} required />
+              </div>
             </div>
 
             <div>
               <label htmlFor="tipoIngreso">Tipo ingreso</label>
-              <input
-              className="INPUT"
-                id="tipoIngreso"
-                name="tipoIngreso"
-                type="text"
-                value={formData.tipodeingresos}
-                onChange={handleChange}
-                required
-              />
+              <input className="INPUT" id="tipoIngreso" name="tipoIngreso" type="text" value={formData.tipodeingresos} onChange={handleChange} required />
             </div>
 
             <div>
               <label htmlFor="mora_total">Mora total ($)</label>
-              <input
-              className="INPUT"
-                id="mora_total"
-                name="mora_total"
-                type="text"
-                value={formData.mora_total}
-                onChange={handleChange}
-                required
-              />
+              <input className="INPUT" id="mora_total" name="mora_total" type="text" value={formData.mora_total} onChange={handleChange} required />
             </div>
 
             <div>
               <label htmlFor="deuda_total">Deuda total ($)</label>
-              <input
-              className="INPUT"
-                id="deuda_total"
-                name="deuda_total"
-                type="text"
-                value={formData.deuda_total}
-                onChange={handleChange}
-                required
-              />
+              <input className="INPUT" id="deuda_total" name="deuda_total" type="text" value={formData.deuda_total} onChange={handleChange} required />
             </div>
 
             <div>
