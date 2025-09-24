@@ -181,6 +181,7 @@ function FormDatos() {
                 <label htmlFor="monto">Monto préstamo</label>
                 <input className="INPUT" id="monto" name="monto" type="text" value={formData.monto} onChange={handleChange} required />
               </div>
+              
             </div>
 
             {/* PLAZO - EDAD - AÑOS */}
@@ -193,18 +194,16 @@ function FormDatos() {
                 <label htmlFor="edad">Edad</label>
                 <input className="INPUT" id="edad" name="edad" type="text" value={formData.edad} onChange={handleChange} required />
               </div>
-              <div>
-                <label htmlFor="anios">Años trabajando</label>
-                <input className="INPUT" id="anios" name="anios" type="text" value={formData.añosexp} onChange={handleChange} required />
-              </div>
+             
             </div>
 
             <div>
               <label htmlFor="tipoIngreso">Tipo ingreso</label>
               <input className="INPUT" id="tipoIngreso" name="tipoIngreso" type="text" value={formData.tipodeingresos} onChange={handleChange} required />
             </div>
-
-            <div>
+                
+                 <div className="form-row">
+                <div>
               <label htmlFor="mora_total">Mora total ($)</label>
               <input className="INPUT" id="mora_total" name="mora_total" type="text" value={formData.mora_total} onChange={handleChange} required />
             </div>
@@ -213,6 +212,9 @@ function FormDatos() {
               <label htmlFor="deuda_total">Deuda total ($)</label>
               <input className="INPUT" id="deuda_total" name="deuda_total" type="text" value={formData.deuda_total} onChange={handleChange} required />
             </div>
+             
+            </div>
+          
 
             <div>
               <label htmlFor="atrasos">¿Tuviste atrasos de pago?</label>
