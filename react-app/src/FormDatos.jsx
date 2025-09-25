@@ -194,13 +194,17 @@ function FormDatos() {
                 <label htmlFor="edad">Edad</label>
                 <input className="INPUT" id="edad" name="edad" type="text" value={formData.edad} onChange={handleChange} required />
               </div>
-             
-            </div>
-
-            <div>
+             <div>
+                <label htmlFor="anios">Años de experiencia</label>
+                <input className="INPUT" id="anios"  name="anios"  type="text" value={formData.añosexp}  onChange={handleChange} required/>
+              </div>
+<div>
               <label htmlFor="tipoIngreso">Tipo ingreso</label>
               <input className="INPUT" id="tipoIngreso" name="tipoIngreso" type="text" value={formData.tipodeingresos} onChange={handleChange} required />
             </div>
+            </div>
+
+            
                 
                  <div className="form-row">
                 <div>
