@@ -1,0 +1,113 @@
+.home-container {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #662d91 0%, #8e44ad 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* HEADER */
+  .home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .home-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .home-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .header-right .material-icons {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  /* CONTENIDO */
+  .home-main {
+    display: flex;
+    
+    align-items: center;
+    flex: 1;
+    padding: 40px;
+    flex-wrap: wrap;
+    text-align: left;
+    width: 1300px;
+  }
+  
+  .home-text {
+    max-width: 600px;
+
+  }
+  
+  .home-text h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    font-size: 60px;
+    width: 800px;
+
+  }
+  
+  .home-text p {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-size: 30px;
+
+  }
+  
+  .home-btn {
+    background-color: #a259ff;
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 30px;
+  }
+  
+  .home-btn:hover {
+    background-color: #8a3ef1;
+  }
+  
+  /* IMAGEN */
+  .home-image img {
+    width: 480px;
+    height: auto;
+    position: relative;
+    left: 40%;
+  }
+  
+  @media (max-width: 768px) {
+    .home-main {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .home-text {
+      max-width: 90%;
+    }
+  
+    .home-image {
+      margin-top: 20px;
+    }
+  }
+  
