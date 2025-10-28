@@ -5,6 +5,7 @@ import Home from "./Home";
 import Register from "./Register";
 import Login from "./Login";
 import FormDatos from "./FormDatos";
+import Resultado from "./Resultado";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/formdatos" element={<FormDatos />} />
+        <Route path="/resultado" element={<Resultado />} />
+
       </Routes>
     </Router>
   );

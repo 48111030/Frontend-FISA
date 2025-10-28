@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 const BASE_URL = 'https://fisa-backend.vercel.app';
 
 function FormDatos() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
@@ -35,6 +37,7 @@ function FormDatos() {
   const [success, setSuccess] = useState(false);
   const [mensajeIA, setMensajeIA] = useState('');
   const [aptoIA, setAptoIA] = useState(null);
+  const [resultadoData, setResultadoData] = useState(null);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -75,9 +78,7 @@ function FormDatos() {
     try {
       const res = await fetch(`${BASE_URL}/solicitudes`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
           tuvo_atrasos: formData.tuvo_atrasos === true || formData.tuvo_atrasos === 'si',
@@ -99,6 +100,7 @@ function FormDatos() {
       setSuccess(true);
       setMensajeIA(data.resultadoIA?.mensaje || '');
       setAptoIA(data.resultadoIA?.resultado ?? null);
+      setResultadoData(data.resultadoIA || {});
 
       setFormData({
         ingresos: '',
@@ -121,6 +123,23 @@ function FormDatos() {
     }
   }
 
+  // 👉 función para redirigir a Resultado.jsx
+  function handleIrResultado() {
+    if (resultadoData) {
+      navigate("/resultado", {
+        state: {
+          factor: resultadoData.factor || "Historial crediticio",
+          detalle: mensajeIA || "Tu perfil no es bueno según las reglas actuales.",
+          sugerencia: resultadoData.sugerencia || "Mejorá ratios de deuda/mora y evitá atrasos para subir de categoría.",
+          valor: resultadoData.valor,
+          umbral: resultadoData.umbral
+        },
+      });
+    } else {
+      alert("Primero envía el formulario para obtener resultados.");
+    }
+  }
+
   return (
     <div>
       <header>
@@ -130,7 +149,7 @@ function FormDatos() {
               arrow_back_ios_new
             </span>
           </button>
-          <img src="./logo.png" alt="" className='logo1' />
+          <img src="./logo.png" alt="Logo" className="logo1" />
         </div>
         <div className="header-right" role="navigation" aria-label="Navegación principal">
           <span className="material-icons" aria-label="Inicio">home</span>
@@ -140,7 +159,6 @@ function FormDatos() {
 
       <main>
         <div className="e-card playing">
-          <div className="image"></div>
           {[1, 2, 3].map((_, i) => (
             <div
               key={i}
@@ -165,9 +183,8 @@ function FormDatos() {
 
         <section className="form-container" aria-label="Formulario para rellenar solicitud">
           <h2>Rellena tus datos de la solicitud</h2>
-          <form onSubmit={handleSubmit} noValidate>
 
-            {/* INGRESOS - DEUDAS - MONTO */}
+          <form onSubmit={handleSubmit} noValidate>
             <div className="form-row">
               <div>
                 <label htmlFor="ingresos">Ingresos mensuales</label>
@@ -181,10 +198,8 @@ function FormDatos() {
                 <label htmlFor="monto">Monto préstamo</label>
                 <input className="INPUT" id="monto" name="monto" type="text" value={formData.monto} onChange={handleChange} required />
               </div>
-              
             </div>
 
-            {/* PLAZO - EDAD - AÑOS */}
             <div className="form-row">
               <div>
                 <label htmlFor="plazo">Plazo meses</label>
@@ -194,31 +209,26 @@ function FormDatos() {
                 <label htmlFor="edad">Edad</label>
                 <input className="INPUT" id="edad" name="edad" type="text" value={formData.edad} onChange={handleChange} required />
               </div>
-             <div>
+              <div>
                 <label htmlFor="anios">Años de experiencia</label>
-                <input className="INPUT" id="anios"  name="anios"  type="text" value={formData.añosexp}  onChange={handleChange} required/>
+                <input className="INPUT" id="anios" name="anios" type="text" value={formData.añosexp} onChange={handleChange} required />
               </div>
-<div>
-              <label htmlFor="tipoIngreso">Tipo ingreso</label>
-              <input className="INPUT" id="tipoIngreso" name="tipoIngreso" type="text" value={formData.tipodeingresos} onChange={handleChange} required />
-            </div>
-            </div>
-
-            
-                
-                 <div className="form-row">
-                <div>
-              <label htmlFor="mora_total">Mora total ($)</label>
-              <input className="INPUT" id="mora_total" name="mora_total" type="text" value={formData.mora_total} onChange={handleChange} required />
+              <div>
+                <label htmlFor="tipoIngreso">Tipo ingreso</label>
+                <input className="INPUT" id="tipoIngreso" name="tipoIngreso" type="text" value={formData.tipodeingresos} onChange={handleChange} required />
+              </div>
             </div>
 
-            <div>
-              <label htmlFor="deuda_total">Deuda total ($)</label>
-              <input className="INPUT" id="deuda_total" name="deuda_total" type="text" value={formData.deuda_total} onChange={handleChange} required />
+            <div className="form-row">
+              <div>
+                <label htmlFor="mora_total">Mora total ($)</label>
+                <input className="INPUT" id="mora_total" name="mora_total" type="text" value={formData.mora_total} onChange={handleChange} required />
+              </div>
+              <div>
+                <label htmlFor="deuda_total">Deuda total ($)</label>
+                <input className="INPUT" id="deuda_total" name="deuda_total" type="text" value={formData.deuda_total} onChange={handleChange} required />
+              </div>
             </div>
-             
-            </div>
-          
 
             <div>
               <label htmlFor="atrasos">¿Tuviste atrasos de pago?</label>
@@ -254,6 +264,24 @@ function FormDatos() {
               </div>
             )}
           </form>
+
+          {/* 🚀 Nuevo botón para ver el resultado */}
+          <button
+            onClick={handleIrResultado}
+            className="resultado-btn"
+            style={{
+              marginTop: "20px",
+              backgroundColor: "#5e2a84",
+              color: "white",
+              border: "none",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              cursor: "pointer",
+            }}
+          >
+            Ver Resultado Detallado
+          </button>
+
         </section>
       </main>
     </div>
